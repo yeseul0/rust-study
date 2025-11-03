@@ -11,7 +11,7 @@ enum Coin {
     Quarter(UsState),
 }
 
-fn value_in_cents(coin: Coin) -> u8 {
+fn value_in_cents(coin: &Coin) -> u8 {
     match coin { //어떤 표현식이든 가능 (지금은 enum type) 
         Coin::Penny => 1, //arm (패턴 => 표현식)
         Coin::Nickel => 5,
@@ -40,7 +40,7 @@ fn move_player(num_spaces : u8) {}
 
 fn main() {
     let my_coin = Coin::Quarter(UsState::Alabama);
-    println!("Value in cents:{}", value_in_cents(my_coin));
+    println!("Value in cents:{}", value_in_cents(&my_coin));
 
     let five = Some(5);
     let six = plus_one(five);
@@ -53,11 +53,24 @@ fn main() {
         other => move_player(other), //_ => () 이렇게 패스 할 수도 있음. (+ 전달값 바인딩 안해도 될 떄)
     }
 
-    //if let 제어
-    let conifg_max = Some(3u8);
+    //if let 제어 (match version)
+    let config_max = Some(3u8);
     match config_max {
         Some(max) => println!("The maximum is configured to be {}", max),
         _ => (),
     }
+    //if let version
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {}", max);
+    }
 
+    //if let + else
+    let mut count = 0;
+    if let Coin::Quarter(state) = my_coin { //참고!!! state가 my_coin의 UsState 값이랑 바인딩 되면서 소유권 가져간다. 싫으면 &my_coin으로 !!
+        println!("State quarter from {:?}!", state);
+    } else {
+        count += 1;
+    }
+
+    
 }
