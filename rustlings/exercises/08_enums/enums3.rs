@@ -46,6 +46,13 @@ impl State {
     fn process(&mut self, message: Message) {
         // TODO: Create a match expression to process the different message
         // variants using the methods defined above.
+        match message {
+            Message::Resize { width, height } => {self.resize(width, height);}
+            Message::Move(point) => {self.move_position(point);} //Message::Move 타입 안 Point가 point 변수에 바인딩.
+            Message::Echo(s) => {self.echo(s);}
+            Message::ChangeColor(red, green, blue) => {self.change_color(red,green,blue);} //Message::ChangeColor 안 (u8,u8,u8)값이 각각 red, green, blue에 바인딩.
+            Message::Quit => {self.quit();}
+        }
     }
 }
 
