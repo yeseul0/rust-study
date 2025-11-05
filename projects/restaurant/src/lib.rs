@@ -57,6 +57,8 @@ mod front_of_house {
 use crate::front_of_house::hosting; //호출할 함수의 부모 묘듈까지만 단축하는게 관례
 //이제 hosting만으로도 접근 가능
 
+pub use crate::front_of_house::hosting; //retaurant 루트 모듈에서 hosting 모듈을 exporting 함.
+//외부 코드에서 reataurant::add_to_wailist()로 바로 함수 호출 가능
 
 
 //front_of_house 공개 API
