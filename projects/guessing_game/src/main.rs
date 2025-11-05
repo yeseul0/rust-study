@@ -1,6 +1,9 @@
-use std::io;
-use std::cmp::Ordering;
+// use std::io;
+// use std::cmp::Ordering;
+use std::{cmp::Ordering, io};//윗 두줄 단축 가능. 중첩 경로
 use rand::Rng;
+
+
 
 fn main() {
     println!("Guess the number!");
