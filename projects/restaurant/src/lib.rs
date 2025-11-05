@@ -54,8 +54,17 @@ mod front_of_house {
 //          ├── serve_order
 //          └── take_payment
 
+use crate::front_of_house::hosting; //호출할 함수의 부모 묘듈까지만 단축하는게 관례
+//이제 hosting만으로도 접근 가능
+
+
+
 //front_of_house 공개 API
 pub fn eat_at_restaurant() {
+    //use (like file system - symbolic link)
+    hosting::add_to_waitlist(); //use crate::front_of_house::hosting; 이 같은 스코프에 있음!!! 
+    //eat_at_restaurant()가 다른 mod로 감싸져 있어서 use문이랑 다른 스코프에 들어가면 compile error
+
     //absolute path : crate 루트부터 시작. (file system이랑 비슷))
     crate::front_of_house::hosting::add_to_waitlist();
     // -> eat_at_waitlist()만 이동시에는 절대경로가 유리
