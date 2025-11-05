@@ -1,13 +1,26 @@
 fn trim_me(input: &str) -> &str {
     // TODO: Remove whitespace from both ends of a string.
+    input.trim()
 }
 
 fn compose_me(input: &str) -> String {
     // TODO: Add " world!" to the string! There are multiple ways to do this.
+    // 방법 1: format! 매크로
+    format!("{} world!", input)
+    
+    // 방법 2: + 연산자
+    // input.to_string() + " world!"
+    //input.to_string().add(" world!") 아 얘는 use std::ops::Add; 이거 추가해야함..ㅠㅠ
+    
+    // 방법 3: push_str
+    // let mut s = input.to_string();
+    // s.push_str(" world!");
+    // s
 }
 
 fn replace_me(input: &str) -> String {
     // TODO: Replace "cars" in the string with "balloons".
+     input.replace("cars", "balloons")
 }
 
 fn main() {
