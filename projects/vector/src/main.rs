@@ -5,7 +5,7 @@ enum SpreadsheetCell{
     Text(String),
 }
 
-fn main() {
+fn main() {. 
     let v = vec![100, 32, 57];
     for i in &v { //i가 각요소 불변 참조자로 iterating
         println!("{i}");
